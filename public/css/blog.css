@@ -1,0 +1,29 @@
+.articles {
+    padding-top: 2rem;
+}
+
+.sidebar {
+    padding-top: 2rem;
+}
+
+.section {
+    padding: 1rem 0;
+}
+
+.article {
+    padding: 1rem 0;
+}
+
+.excerpt {
+    padding: 1em 0;
+    font-size: 1.5em;
+}
+
+.content {
+    font-size: 1.2em;
+}
+
+footer {
+    padding: 1rem 0;
+    background-color: #D0B8AC;
+}
