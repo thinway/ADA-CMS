@@ -23,4 +23,20 @@ class Post extends Model
     public static function scopePublished($query) {
         return $query->where('status', 'published');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function addComment($body)
+    {
+        $this->comments()->create([
+            'body' => $body
+        ]);
+//        Comment::create([
+//            'body' => $body,
+//            'post_id' => $this->id
+//        ]);
+    }
 }
