@@ -16,6 +16,16 @@ class Post extends Model
         return 'slug';
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     function isDraft(){
         return true;
     }
@@ -24,19 +34,14 @@ class Post extends Model
         return $query->where('status', 'published');
     }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
 
-    public function addComment($body)
+
+    public function addComment($message, $name, $email)
     {
         $this->comments()->create([
-            'body' => $body
+            'name' => $name,
+            'email' => $email,
+            'message' => $message
         ]);
-//        Comment::create([
-//            'body' => $body,
-//            'post_id' => $this->id
-//        ]);
     }
 }
