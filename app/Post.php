@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+
 class Post extends Model
 {
     /**
@@ -34,8 +36,6 @@ class Post extends Model
         return $query->where('status', 'published');
     }
 
-
-
     public function addComment($message, $name, $email)
     {
         $this->comments()->create([
@@ -43,5 +43,20 @@ class Post extends Model
             'email' => $email,
             'message' => $message
         ]);
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        if ( isset($filters['month']) ){
+            if ( $month = $filters['month'] ) {
+                $query->whereMonth('created_at', Carbon::parse($month)->month);
+            }
+        }
+
+        if ( isset($filters['year']) ){
+            if ( $year = $filters['year'] ) {
+                $query->whereYear('created_at', $year);
+            }
+        }
     }
 }

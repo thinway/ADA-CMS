@@ -1,6 +1,16 @@
 <div class="sidebar col-3">
 
     <div class="section">
+        <h3>Archives</h3>
+        <ul class="list-group">
+            @foreach($archives as $archive)
+            <li class="list-group-item"><a href="/?month={{ $archive->month }}&year={{ $archive->year }}">
+                    {{ $archive->month }} {{ $archive->year }} ({{ $archive->numberOfPosts  }})</a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+    <div class="section">
         <h3>Last Posts</h3>
         <ul class="list-group">
             <li class="list-group-item">first</li>

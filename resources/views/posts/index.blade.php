@@ -6,7 +6,7 @@
             <div class="articles col-9">
 
                 <nav aria-label="Page navigation example">
-                    {{ $posts->links() }}
+                    {{ $posts->appends(request()->query())->links() }}
                 </nav>
 
                 @foreach($posts as $post)
@@ -19,7 +19,7 @@
                     </div>
                 @endforeach
                 <nav aria-label="Page navigation example">
-                    {{ $posts->links() }}
+                    {{ $posts->appends(request()->query())->links() }}
                 </nav>
             </div>
             @include('partials.public.sidebar')
