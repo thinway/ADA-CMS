@@ -20,15 +20,9 @@ class PostsController extends Controller
             ->filter(request(['month', 'year']))
             ->paginate(10);
 
-        $archives = Post::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) numberOfPosts')
-            ->orderByRaw('min(created_at) desc')
-            ->groupBy('year', 'month')
-            ->get();
-
-
         // Here we send the data through the PHP function 'compact'
         // See Documentation: http://php.net/manual/es/function.compact.php
-        return view('posts.index', compact('posts','archives'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
