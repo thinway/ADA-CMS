@@ -2,6 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Post;
+use App\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -12,15 +15,12 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testHomePage()
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
     }
 
-    public function testTitleHome()
-    {
-        $this->get('/')->assertSeeText('MyBlog');
-    }
+
 }
