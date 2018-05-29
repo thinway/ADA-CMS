@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-dark navbar-laravel bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -11,8 +11,8 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @auth()
-                <li><a class="nav-link" href="{{ url('/') }}/posts/create">New Post</a></li>
-                    @endauth
+
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->

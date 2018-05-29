@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('public.layouts.app')
 
 @section('content')
     <div class="container">
@@ -12,9 +12,9 @@
                     <p class="content">{{ $post->content }}</p>
                 </div>
                 <hr>
-                @include('partials.public.comments')
+                @include('public.partials.comments')
             </div>
-            @include('partials.public.sidebar')
+            @include('public.partials.sidebar')
         </div>
     </div>
 @endsection

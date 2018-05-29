@@ -32,6 +32,10 @@ class Post extends Model
         return true;
     }
 
+    function isMine(User $user){
+        return $this->user_id === $user->id;
+    }
+
     public static function scopePublished($query) {
         return $query->where('status', 'published');
     }

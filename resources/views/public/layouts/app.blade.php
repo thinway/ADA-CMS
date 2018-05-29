@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        @include('partials.public.nav')
+        @include('public.partials.nav')
 
         @yield('content')
 

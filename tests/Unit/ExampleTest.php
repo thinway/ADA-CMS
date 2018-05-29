@@ -10,17 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
+    // Information for all: Repasate los traits mi arma!
     use DatabaseTransactions;
-
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
 
     public function testArchives()
     {
@@ -44,7 +35,7 @@ class ExampleTest extends TestCase
             [
                 'year' => $first->created_at->format('Y'),
                 'month'=> $first->created_at->format('F'),
-                'numberOfPosts' => 2
+                'numberOfPosts' => 1
             ],
             [
                 'year' => $second->created_at->format('Y'),
