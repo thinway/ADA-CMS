@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @auth()
-
+                    <li><a class="nav-link" href="/admin/posts/create">New Post</a></li>
                 @endauth
             </ul>
 

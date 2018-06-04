@@ -49,7 +49,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('public.posts.create');
+        return view('admin.posts.create');
     }
 
     public function store(CreatePostRequest $request)

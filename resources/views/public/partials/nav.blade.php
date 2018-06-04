@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @auth()
-                <li><a class="nav-link" href="{{ url('/') }}/posts/create">New Post</a></li>
+
                 <li><a class="nav-link" href="{{ url('/') }}/admin/posts">My Posts</a></li>
                 @endauth
             </ul>
