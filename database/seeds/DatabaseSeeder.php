@@ -15,11 +15,14 @@ class DatabaseSeeder extends Seeder
         factory(App\User::class, 1)->create([
             'role' => 'admin'
         ]);
-//        factory(App\Post::class, 1)->create([
-//            'user_id' => 1
-//        ]);
-//        factory(App\Comment::class, 1)->create([
-//            'post_id' => 1
-//        ]);
+
+        factory(App\Post::class, 1)->create(['user_id' => 1])->each(function ($post){
+            $post->tags()->save(factory(App\Tag::class)->make());
+        });
+
+        factory(App\Comment::class, 1)->create([
+            'post_id' => 1
+        ]);
+
     }
 }

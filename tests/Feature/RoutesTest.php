@@ -30,11 +30,13 @@ class RoutesTest extends TestCase
      */
     public function testNewPost()
     {
-        $user = User::find(1);
+            $user = User::find(1);
 
+        // The user is not logged in
         $response = $this->get('/posts/create');
         $response->assertStatus(302);
 
+        // The user is logged in
         $response = $this->actingAs($user)->get('/posts/create');
         $response->assertStatus(200);
     }
