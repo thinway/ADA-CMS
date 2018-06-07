@@ -30,3 +30,14 @@
         </div>
     @endif
 </div>
+
+<div class="form-group">
+    <label for="tags">Tags</label>
+    <input type="text" class="form-control {{ $errors->has('tags') ? 'is-invalid' : '' }}" id="tags" name="tags" value="{{ $tags or old('tags') }}">
+    <small id="tagsHelp" class="form-text text-muted">Enter the post tags</small>
+    @if( $errors->has('tags') )
+        <div class="invalid-feedback">
+            {{ $errors->first('tags') }}
+        </div>
+    @endif
+</div>

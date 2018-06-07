@@ -10,6 +10,8 @@
                     <img src="https://picsum.photos/800/300" alt="Picsum Pic" class="img-fluid">
                     <p class="excerpt">{{ $post->excerpt }}</p>
                     <p class="content">{{ $post->content }}</p>
+
+                    @include('public.partials.tags')
                 </div>
                 <hr>
                 @include('public.partials.comments')

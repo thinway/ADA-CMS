@@ -15,6 +15,7 @@
                         <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }}</p>
                         <img src="https://picsum.photos/800/300" alt="Picsum Pic" class="img-fluid">
                         <p class="excerpt">{{ $post->excerpt }}</p>
+                        @include('public.partials.tags')
                         <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read more</a>
                     </div>
                 @endforeach

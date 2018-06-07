@@ -26,4 +26,6 @@ Route::post('/admin/posts', 'PostsController@store')->middleware('auth');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit')->middleware('auth')->name('posts.edit');
 Route::patch('/admin/posts/{post}', 'PostsController@patch')->name('posts.patch');
 
+Route::resource('/tags', 'TagController');
+
 Auth::routes();

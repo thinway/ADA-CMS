@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -54,7 +55,9 @@ class PostsController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        Post::create([
+        $tags = explode(", ",\request('tags'));
+
+        $post = Post::create([
             'user_id' => $request->user()->id,
             'title' => \request('title'),
             'slug' => str_slug(\request('title')),
@@ -62,13 +65,24 @@ class PostsController extends Controller
             'content' => \request('content')
         ]);
 
+        foreach ($tags as $tag){
+            $tag = Tag::firstOrCreate([
+                'name' => $tag,
+                'slug' => str_slug($tag)
+            ]);
+            $post->tags()->attach($tag);
+        }
+
         return redirect('/');
     }
 
     public function edit(Post $post) {
 
         if( Gate::allows('canEdit', $post) ) {
-            return view('admin.posts.edit', ['post' => $post]);
+            return view('admin.posts.edit', [
+                'post' => $post,
+                'tags' => $post->tags->pluck('name')->implode(', ')
+            ]);
         }
 
         return "Not allowed";
@@ -82,6 +96,21 @@ class PostsController extends Controller
             'excerpt' => $request->input('excerpt'),
             'content' => $request->input('content'),
         ]);
+
+        $tags = explode(", ",\request('tags'));
+        //dd($tags);
+        $newTags = [];
+        foreach ($tags as $tag){
+            $tag = Tag::firstOrCreate([
+                'name' => $tag,
+                'slug' => str_slug($tag)
+            ]);
+            array_push($newTags, $tag);
+        }
+
+        //dd(collect($newTags)->pluck('id')->toArray());
+
+        $post->tags()->sync(collect($newTags)->pluck('id')->toArray());
 
         $post->update();
 

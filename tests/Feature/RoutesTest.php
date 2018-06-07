@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Post;
+use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -30,7 +31,7 @@ class RoutesTest extends TestCase
      */
     public function testNewPost()
     {
-            $user = User::find(1);
+        $user = User::find(1);
 
         // The user is not logged in
         $response = $this->get('/admin/posts/create');
